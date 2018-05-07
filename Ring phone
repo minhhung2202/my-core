@@ -1,0 +1,161 @@
+// Functions
+if ( !function_exists('social_footer') ) {
+	function social_footer() { ?>
+		<div id="nz-phone-phoneIcon" class="nz-phone-phone nz-phone-green nz-phone-show">
+			<div class="nz-phone-ph-circle"></div>
+			<div class="nz-phone-ph-circle-fill"></div>
+			<div class="nz-phone-ph-img-circle">
+				<a href="tel:0437185895"><i class="fa fa-phone" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	<?php }
+	add_action('wp_footer','social_footer');
+}
+
+// CSS
+div#nz-phone-phoneIcon {
+  bottom: 10%;
+  position: fixed;
+}
+
+div#nz-phone-phoneIcon i.fa-phone {
+  color: #fff;
+  padding-left: 7px;
+}
+
+.nz-phone-phone {
+  background-color: transparent;
+  cursor: pointer;
+  height: 80px;
+  position: absolute;
+  transition: visibility 0.5s ease 0s;
+  visibility: hidden;
+  width: 80px;
+  z-index: 200000 !important;
+}
+
+.nz-phone-phone.nz-phone-show {
+  visibility: visible;
+}
+
+.nz-phone-phone.nz-phone-hover,
+.nz-phone-phone:hover {
+  opacity: 1;
+}
+
+.nz-phone-ph-circle {
+  animation: 1.2s ease-in-out 0s normal none infinite running nz-phone-circle-anim;
+  background-color: transparent;
+  border: 2px solid rgba(30, 30, 30, 0.4);
+  border-radius: 100%;
+  height: 70px;
+  left: 10px;
+  opacity: 0.1;
+  position: absolute;
+  top: 12px;
+  transform-origin: 50% 50% 0;transition: all 0.5s ease 0s;
+  width: 70px;
+}
+
+.nz-phone-phone.nz-phone-active .nz-phone-ph-circle {
+  animation: 1.1s ease-in-out 0s normal none infinite running nz-phone-circle-anim !important;
+}
+
+.nz-phone-phone.nz-phone-static .nz-phone-ph-circle {
+  animation: 2.2s ease-in-out 0s normal none infinite running nz-phone-circle-anim !important;
+}
+
+.nz-phone-phone.nz-phone-hover .nz-phone-ph-circle,
+.nz-phone-phone:hover .nz-phone-ph-circle {
+  border-color: #004196;
+  opacity: 0.5;
+}
+
+.nz-phone-phone.nz-phone-green.nz-phone-hover .nz-phone-ph-circle,
+.nz-phone-phone.nz-phone-green:hover .nz-phone-ph-circle {
+  border-color: #baf5a7;opacity: 0.5;
+}
+
+.nz-phone-phone.nz-phone-green .nz-phone-ph-circle {
+  border-color: #004196;
+  opacity: 0.5;
+}
+
+.nz-phone-ph-circle-fill {
+  animation: 2.3s ease-in-out 0s normal none infinite running nz-phone-circle-fill-anim;
+  background-color: #000;
+  border: 2px solid transparent;
+  border-radius: 100%;
+  height: 30px;
+  left: 30px;
+  opacity: 0.1;
+  position: absolute;
+  top: 33px;
+  transform-origin: 50% 50% 0;
+  transition: all 0.5s ease 0s;
+  width: 30px;
+}
+
+.nz-phone-phone.nz-phone-hover .nz-phone-ph-circle-fill,
+.nz-phone-phone:hover .nz-phone-ph-circle-fill {
+  background-color: rgba(0, 175, 242, 0.5);
+  opacity: 0.75 !important;
+}
+
+.nz-phone-phone.nz-phone-green.nz-phone-hover .nz-phone-ph-circle-fill,
+.nz-phone-phone.nz-phone-green:hover .nz-phone-ph-circle-fill {
+  background-color: rgba(117, 235, 80, 0.5);
+  opacity: 0.75 !important;
+}
+
+.nz-phone-phone.nz-phone-green .nz-phone-ph-circle-fill {
+  background-color: rgba(0, 175, 242, 0.5);
+  opacity: 0.75 !important;
+}
+
+.nz-phone-ph-img-circle {
+  animation: 1s ease-in-out 0s normal none infinite running nz-phone-circle-img-anim;
+  border: 2px solid transparent;
+  border-radius: 100%;
+  height: 30px;
+  left: 30px;
+  opacity: 1;
+  position: absolute;
+  top: 33px;
+  transform-origin: 50% 50% 0;
+  width: 30px;
+}
+
+.nz-phone-phone.nz-phone-hover .nz-phone-ph-img-circle,
+.nz-phone-phone:hover .nz-phone-ph-img-circle {
+  background-color: #004196;
+}
+
+.nz-phone-phone.nz-phone-green.nz-phone-hover .nz-phone-ph-img-circle,
+.nz-phone-phone.nz-phone-green:hover .nz-phone-ph-img-circle {
+  background-color: #75eb50;
+}
+
+.nz-phone-phone.nz-phone-green .nz-phone-ph-img-circle {
+  background-color: #004196;
+}
+@keyframes nz-phone-circle-anim {   0% {    opacity: 0.1;   transform: rotate(0deg) scale(0.5) skew(1deg);  }
+  30% {   opacity: 0.5;   transform: rotate(0deg) scale(0.7) skew(1deg);  }
+  100% {  opacity: 0.6;   transform: rotate(0deg) scale(1) skew(1deg);    }
+}
+
+@keyframes nz-phone-circle-img-anim {
+  0% {    transform: rotate(0deg) scale(1) skew(1deg);    }
+  10% {   transform: rotate(-25deg) scale(1) skew(1deg);  }
+  20% {   transform: rotate(25deg) scale(1) skew(1deg);   }
+  30% {   transform: rotate(-25deg) scale(1) skew(1deg);  }
+  40% {   transform: rotate(25deg) scale(1) skew(1deg);   }
+  50% {   transform: rotate(0deg) scale(1) skew(1deg);    }
+  100% {  transform: rotate(0deg) scale(1) skew(1deg);    }
+}
+
+@keyframes nz-phone-circle-fill-anim {
+  0% {    opacity: 0.2;   transform: rotate(0deg) scale(0.7) skew(1deg);  }
+  50% {   opacity: 0.2;   transform: rotate(0deg) scale(1) skew(1deg);    }
+  100% {  opacity: 0.2;   transform: rotate(0deg) scale(0.7) skew(1deg);  }
+}
