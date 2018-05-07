@@ -1,0 +1,39 @@
+// MH Owl Carousel
+if ( !function_exists( 'mh_owl_carousel' ) ) {
+  function mh_owl_carousel() { ?>
+				<script type="text/javascript">
+				/* Testimonial */
+				$( '.mh-owl-carousel > #hs_testimonial_theme_1' ).addClass( 'owl-carousel owl-theme' );
+				$( '.mh-owl-carousel > #hs_testimonial_theme_1' ).owlCarousel({
+					loop: true,
+					margin: 0,
+					nav: true,
+					navText: [
+							'<i class="fa fa-angle-left" aria-hidden="true"></i>',
+							'<i class="fa fa-angle-right" aria-hidden="true"></i>'
+						],
+					autoplay: true,
+					dots: false,
+					autoplayTimeout: 5000,
+					autoplayHoverPause: true,
+					responsiveClass: true,
+					autoplaySpeed: 1000
+					responsive: {
+							0: {
+								items: 1,
+								nav: false,
+							},
+							600: {
+								items: 1,
+								nav: false
+							},
+							1000: {
+								items: 1,
+								loop: true,
+							}
+						}
+					})
+				</script>
+  <?php }
+  add_action( 'ocean_footer', 'mh_owl_carousel' );
+}
