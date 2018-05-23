@@ -1,4 +1,4 @@
-// Remove the tabs from woocommerce - posted by Robin Scott of Silicon Dales @ https://silicondales.com/tutorials/woocommerce-tutorials/remove-tab-woocommerce/
+// Remove the tabs from woocommerce
 function woo_remove_product_tabs( $tabs ) {
   unset( $tabs['description'] ); // Remove the description tab
   unset( $tabs['reviews'] ); // Remove the reviews tab
