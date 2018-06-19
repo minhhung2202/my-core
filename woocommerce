@@ -6,6 +6,8 @@ function woo_remove_product_tabs( $tabs ) {
   return $tabs;
 }
 add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
+// Get price
+$product->get_price_html();
 
 // Remove checkout field Woocommerce
 function custom_remove_woo_checkout_fields( $fields ) {
