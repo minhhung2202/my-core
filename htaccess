@@ -36,7 +36,6 @@ Header set Cache-Control "private, must-revalidate"
 FileETag None
 # TN - END Turn ETags Off
 
-
 //Enable GZIP Compression
 <IfModule mod_deflate.c>
   # Compress HTML, CSS, JavaScript, Text, XML and fonts
