@@ -1,14 +1,10 @@
-/**
- * Modify Admin Footer Text
- */
+/* Modify Admin Footer Text */
 function modify_footer() {
 	echo 'Created by <a href="mailto:you@example.com">you</a>.';
 }
 add_filter( 'admin_footer_text', 'modify_footer' );
 
-/**
- * Disable Emoji Mess
- */
+/* Disable Emoji Mess */
 function disable_wp_emojicons() {
 	remove_action( 'admin_print_styles', 'print_emoji_styles' );
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
@@ -32,9 +28,7 @@ add_filter( 'xmlrpc_enabled', '__return_false' );
 remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
 
-/**
- * Remove Query String from Static Resources 
- */
+/* Remove Query String from Static Resources */
 function remove_cssjs_ver( $src ) {
  if( strpos( $src, '?ver=' ) )
  $src = remove_query_arg( 'ver', $src );
@@ -43,9 +37,7 @@ function remove_cssjs_ver( $src ) {
 add_filter( 'style_loader_src', 'remove_cssjs_ver', 10, 2 );
 add_filter( 'script_loader_src', 'remove_cssjs_ver', 10, 2 );
 
-/**
- * Deferring parsing of JavaScript
- */
+/* Deferring parsing of JavaScript */
 function defer_parsing_of_js ( $url ) {
 if ( FALSE === strpos( $url, '.js' ) ) return $url;
 if ( strpos( $url, 'jquery.js' ) ) return $url;
