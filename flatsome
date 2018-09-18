@@ -1,0 +1,5 @@
+/**
+ * Function
+ */
+/* Breadcrumbs */
+get_flatsome_breadcrumbs();
