@@ -1,0 +1,8 @@
+/**
+ * Function
+ */
+/* Posts */ 
+global $post;
+$post_date = get_the_date();
+$post_time = get_the_time();
+get_comments_number($post->ID); // Đếm bình luận
