@@ -1,0 +1,6 @@
+/**
+ * Click add class 
+ */
+$('.star').click(function(){
+  $(this).toggleClass('clicked');
+});
