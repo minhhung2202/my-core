@@ -30,6 +30,11 @@
  * SKU
  */  
  $product->get_sku();
+ 
+/**
+ * ID
+ */
+ $product->get_id();
 
 /**
  * Remove checkout field Woocommerce
