@@ -6,4 +6,10 @@ global $post;
 $post_date = get_the_date();
 $post_time = get_the_time();
 get_comments_number($post->ID); // Đếm bình luận
-single_cat_title(); // Lấy category
+
+/* Category */
+$categories = get_the_category();
+$category_id = $categories[0]->cat_ID;
+echo get_cat_name($category_id);
+
+single_cat_title(); // Flatsome
