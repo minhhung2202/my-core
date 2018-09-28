@@ -71,18 +71,16 @@
   }
   add_filter( 'woocommerce_checkout_fields' , 'custom_remove_woo_checkout_fields' );
   
-  
 /**
  * Add a custom product data tab
  */
-
 function woo_new_product_tab( $tabs ) {
 	$tabs['test_tab'] = array(
-		'title' 	=> __( 'New Product Tab', 'woocommerce' ),
-		'priority' 	=> 50,
-		'callback' 	=> 'woo_new_product_tab_content'
-	);
-	return $tabs;
+	'title' 	=> __( 'New Product Tab', 'woocommerce' ),
+	'priority' 	=> 50,
+	'callback' 	=> 'woo_new_product_tab_content'
+);
+return $tabs;
 }
 add_filter( 'woocommerce_product_tabs', 'woo_new_product_tab' );
 function woo_new_product_tab_content() {
