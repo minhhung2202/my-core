@@ -3,3 +3,31 @@
  */
 /* Breadcrumbs */
 get_flatsome_breadcrumbs();
+
+/* Change font size backend */
+if ( ! function_exists( 'devvn_ilc_mce_buttons' ) ) {
+    function devvn_ilc_mce_buttons($buttons){
+        array_push($buttons,
+            "alignjustify",
+            "subscript",
+            "superscript"
+        );
+        return $buttons;
+    }
+    add_filter("mce_buttons", "devvn_ilc_mce_buttons");
+}
+if ( ! function_exists( 'devvn_ilc_mce_buttons_2' ) ) {
+    function devvn_ilc_mce_buttons_2($buttons){
+        array_push($buttons,
+            "fontselect",
+            "cleanup"
+        );
+        return $buttons;
+    }
+    add_filter("mce_buttons_2", "devvn_ilc_mce_buttons_2", 9999);
+}
+ 
+function flatsome_editor_text_sizes($initArray){
+    $initArray['fontsize_formats'] = "9px 10px 12px 13px 14px 16px 17px 18px 19px 20px 21px 24px 28px 32px 36px";
+    return $initArray;
+};
