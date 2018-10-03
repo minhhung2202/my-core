@@ -109,4 +109,15 @@ function woo_new_product_tab_content() {
 	echo '<h2>New Product Tab</h2>';
 	echo '<p>Here\'s your new product tab.</p>';
 }
+
+/**
+ * Change symbol VND
+ */
+function change_existing_currency_symbol( $currency_symbol, $currency ) {
+	switch( $currency ) {
+		case 'VND': $currency_symbol = 'VNĐ'; break;
+	}
+	return $currency_symbol;
+}
+add_filter('woocommerce_currency_symbol', 'change_existing_currency_symbol', 10, 2);
  
