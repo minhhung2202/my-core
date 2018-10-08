@@ -1,0 +1,56 @@
+/* Custom taxonomy */
+function mh_taxonomy_testimonial() {
+  $labels = array(
+    'name' => 'Testimonial Category',
+    'singular' => 'Add testimonial',
+    'menu_name' => 'Testimonial Category'
+  );
+
+  $args = array(
+    'labels' => $labels,
+    'hierarchical' => true,
+    'public' => true,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'show_in_nav_menus' => true,
+    'show_tagcloud' => true
+  );
+  register_taxonomy( 'category-testimonial', 'testimonial', $args );
+}
+add_action( 'init', 'mh_taxonomy_testimonial', 0 );
+
+/* Custom post type */
+function mh_testimonial() {
+  $label = array(
+    'name' => 'Testimonial',
+    'all_items' => 'All testimonial',
+    'add_new' => 'New testimonial',
+    'add_new_item' => 'Add new testimonial'
+  );
+
+  $args = array(
+    'labels' => $label,
+    'description' => 'Post type add testimonial',
+    'supports' => array(
+      'title',
+      'editor',
+      'thumbnail'
+    ),
+    'taxonomies' => array( 'category-testimonial' ),
+    'hierarchical' => false,
+    'public' => true,
+    'show_ui' => true,
+    'show_in_menu' => true,
+    'show_in_nav_menus' => true,
+    'show_in_admin_bar' => true,
+    'menu_position' => 5,
+    'menu_icon' => 'dashicons-format-status',
+    'can_export' => true,
+    'has_archive' => true,
+    'exclude_from_search' => false,
+    'publicly_queryable' => true,
+    'capability_type' => 'post'
+  );
+  register_post_type ( 'testimonial', $args );
+}
+add_action( 'init', 'mh_testimonial' );
