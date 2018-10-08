@@ -1,3 +1,6 @@
+/* Include */
+require_once(  __DIR__ . '/testimonial/testimonial.php' );
+
 /* Custom taxonomy */
 function mh_taxonomy_testimonial() {
   $labels = array(
