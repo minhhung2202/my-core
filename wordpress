@@ -13,3 +13,11 @@ $category_id = $categories[0]->cat_ID;
 echo get_cat_name($category_id);
 
 single_cat_title(); // Flatsome
+
+/* Shortcode WPML */
+function language_switcher_fun( $atts ){
+    ob_start();
+    do_action('icl_language_selector');
+    return ob_get_clean();
+}
+add_shortcode( 'language_switcher_shortcode', 'language_switcher_fun' );
