@@ -124,6 +124,7 @@ add_filter('woocommerce_currency_symbol', 'change_existing_currency_symbol', 10,
 /**
  * Custom taxonomy product
  */
+add_action( 'init', 'custom_taxonomy_Item' );
 function custom_taxonomy_Item()  {
 $labels = array(
     'name'                       => 'Items',
@@ -153,4 +154,3 @@ $args = array(
 register_taxonomy( 'item', 'product', $args );
 register_taxonomy_for_object_type( 'item', 'product' );
 }
- 
