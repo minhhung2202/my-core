@@ -154,3 +154,13 @@ $args = array(
 register_taxonomy( 'item', 'product', $args );
 register_taxonomy_for_object_type( 'item', 'product' );
 }
+
+/* Get Taxonomy custom */
+$taxonomy_slug = "brands";
+  $terms = get_the_terms( $id, $taxonomy_slug );
+  if ( !empty( $terms ) ) {
+    foreach ( $terms as $term ) {
+      $out[] = '<a href="'. get_term_link( $term->slug, $taxonomy_slug ) .'">'. $term->name. "</a>";
+    }
+    echo implode(', ', $out );
+  }
