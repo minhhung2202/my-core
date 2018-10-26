@@ -40,6 +40,13 @@ add_action( 'init', 'remove_woocommerce_add_to_cart_button' );
   <?php elseif($price) : ?>
     <p class="product-price-tickr"><?php echo $currency; echo $price; ?></p>    
   <?php endif; ?>
+  /* Prefix price */
+  function bbloomer_price_translatable_suffix( $html, $product, $price, $qty ){
+	$html .=  __( '<span class="mh-price-prefix">Giá: </span>', 'flatsome' );
+	return $html;
+  }
+  add_filter( 'woocommerce_get_price_suffix', 'bbloomer_price_translatable_suffix', 99, 4 );
+
   
 /**
  * SKU
