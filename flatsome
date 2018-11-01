@@ -3,6 +3,7 @@
  */
 /* Breadcrumbs */
 get_flatsome_breadcrumbs();
+do_action('flatsome_product_title');
 
 /* Pagination */
 flatsome_posts_pagination();
