@@ -180,3 +180,30 @@ $taxonomy_slug = "brands";
     }
     echo implode(', ', $out );
   }
+  
+ /*
+  * Custom prefix and sufix to price
+  */
+function bbloomer_price_prefix_suffix( $price, $product ) {
+  $text_price = __( 'Giá gốc:', 'flatsome' );
+  $text_sales = __( 'Giá bán:', 'flatsome' );
+  if ( $product->is_on_sale() ) {
+      $price = $text_price.' <span>'.$price.'</span>	';
+      return apply_filters( 'woocommerce_get_price', $price );
+    } else {
+      $price = $text_sales.' <span>'.$price.'</span>	';
+      return apply_filters( 'woocommerce_get_price', $price );
+  }
+}
+add_filter( 'woocommerce_get_price_html', 'bbloomer_price_prefix_suffix', 100, 2 );
+
+function bd_sale_price_html( $price, $product ) {
+	$text_sales = __( 'Giá bán', 'emallshop-child' );
+  if ( $product->is_on_sale() ) :
+    $return_string = str_replace( '<ins>', '<ins><br />'.$text_sales.': ', $price);
+    return $return_string;
+  else :
+    return $price;
+  endif;
+}
+add_filter( 'woocommerce_get_price_html', 'bd_sale_price_html', 100, 2 );
