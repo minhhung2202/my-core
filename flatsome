@@ -9,6 +9,22 @@ do_action('flatsome_product_title');
 flatsome_posts_pagination();
 
 /* Change font size backend */
+function ilc_mce_buttons($buttons){
+	array_push($buttons,
+		"backcolor",
+		"anchor",
+		"hr",
+		"sub",
+		"sup",
+		"fontselect",
+		"fontsizeselect",
+		"styleselect",
+		"cleanup"
+	);
+	return $buttons;
+}
+add_filter("mce_buttons", "ilc_mce_buttons");
+
 if ( ! function_exists( 'devvn_ilc_mce_buttons' ) ) {
     function devvn_ilc_mce_buttons($buttons){
         array_push($buttons,
