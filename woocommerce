@@ -184,6 +184,7 @@ $taxonomy_slug = "brands";
  /*
   * Custom prefix and sufix to price
   */
+/* Custom prefix and sufix to price */
 function bbloomer_price_prefix_suffix( $price, $product ) {
   $text_price = __( 'Giá gốc:', 'flatsome' );
   $text_sales = __( 'Giá bán:', 'flatsome' );
@@ -207,3 +208,10 @@ function bd_sale_price_html( $price, $product ) {
   endif;
 }
 add_filter( 'woocommerce_get_price_html', 'bd_sale_price_html', 100, 2 );
+
+/* Contact price */
+function mh_custom_call_for_price() {
+	$text_contact = __( 'Liên hệ', 'emallshop-child' );
+	return '<span class="cfps">'.$text_contact.'</span>';
+}
+add_filter( 'woocommerce_empty_price_html', 'mh_custom_call_for_price' );
