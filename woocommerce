@@ -215,3 +215,24 @@ function mh_custom_call_for_price() {
 	return '<span class="cfps">'.$text_contact.'</span>';
 }
 add_filter( 'woocommerce_empty_price_html', 'mh_custom_call_for_price' );
+
+/**
+ * Quick checkout
+ */
+function add_content_after_addtocart() {
+
+    // get the current post/product ID
+    $current_product_id = get_the_ID();
+
+    // get the product based on the ID
+    $product = wc_get_product( $current_product_id );
+
+    // get the "Checkout Page" URL
+    $checkout_url = WC()->cart->get_checkout_url();
+
+    // run only on simple products
+    if( $product->is_type( 'simple' ) ){
+        echo '<a href="'.$checkout_url.'?add-to-cart='.$current_product_id.'" class="single_add_to_cart_button button alt">Checkout</a>';
+    }
+}
+add_action( 'woocommerce_after_add_to_cart_button', 'add_content_after_addtocart' );
