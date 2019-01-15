@@ -11,6 +11,7 @@ get_comments_number($post->ID); // Đếm bình luận
 $categories = get_the_category();
 $category_id = $categories[0]->cat_ID;
 echo get_cat_name($category_id);
+echo get_the_category_list;
 
 single_cat_title(); // Flatsome
 
