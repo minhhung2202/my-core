@@ -14,6 +14,7 @@ function minhhung_load_theme_style() {
     }
     /* Add Font Awesome */
     wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' );
+    wp_enqueue_style( 'new-font-awesome', 'https://use.fontawesome.com/releases/v5.7.0/css/all.css' );
 
     /* Owl Carousel */
     wp_enqueue_style( 'owl-min', get_stylesheet_directory_uri() . '/owl-carousel/owl.carousel.min.css', 'all' );
