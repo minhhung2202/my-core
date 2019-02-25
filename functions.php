@@ -19,4 +19,4 @@ function mh_load_theme_style() {
     wp_register_style( 'all-font-awesome', get_stylesheet_directory_uri() . '/assets/fontsawesome/css/all.min.css', false, false );
     wp_enqueue_style( 'all-font-awesome' );
 }
-add_action('wp_enqueue_scripts', 'mh_load_theme_style', 998 );
+add_action( 'wp_enqueue_scripts', 'mh_load_theme_style', 998 );
