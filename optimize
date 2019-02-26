@@ -1,3 +1,6 @@
+/**
+ * MH Optimize
+ */
 /* Modify Admin Footer Text */
 function modify_footer() {
 	echo 'Created by <a href="mailto:you@example.com">you</a>.';
