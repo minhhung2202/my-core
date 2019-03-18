@@ -22,3 +22,64 @@ function language_switcher_fun( $atts ){
     return ob_get_clean();
 }
 add_shortcode( 'language_switcher_shortcode', 'language_switcher_fun' );
+
+/* Bredcrumbs shortcode */
+if ( !function_exists('mh_bredcrumbs') ) {
+	function mh_bredcrumbs() {
+		ob_start();
+		echo '<div class="mh-bredcrumbs">';
+			echo '<ul id="mh-crumbs">';
+        echo '<li><a href="';
+        	echo get_option('home');
+        	echo '">';
+        	_e( 'Trang chủ', 'flatsome' );
+        echo "</a></li>";
+        if (is_category() || is_single()) {
+          echo '<li class="mh-child-crumbs">';
+          	the_category(' </li><li> ');
+        	if (is_single()) {
+            echo '</li><li class="mh-child-crumbs">';
+            the_title();
+            echo '</li>';
+          }
+        } elseif (is_page()) {
+          echo '<li class="mh-child-crumbs">';
+          echo the_title();
+          echo '</li>';
+        }
+	      elseif (is_tag()) {
+					single_tag_title();
+				}
+	      elseif ( is_day() ) {
+						_e( '<li class="mh-child-crumbs">Archive for', 'flatsome' );
+						the_time('F jS, Y');
+						echo '</li>';
+					}
+	      elseif ( is_month() ) {
+						_e( '<li class="mh-child-crumbs">Archive for', 'flatsome' );
+						the_time('F, Y');
+						echo'</li>';
+					}
+	      elseif ( is_year() ) {
+						_e( '<li class="mh-child-crumbs">Archive for', 'flatsome' );
+						the_time('Y');
+						echo '</li>';
+					}
+	      elseif ( is_author() ) {
+						_e( '<li class="mh-child-crumbs">Archive for', 'flatsome' );
+						echo '</li>';
+					}
+	      elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
+					_e( '<li class="mh-child-crumbs">Blog Archives', 'flatsome' );
+					echo '</li>';
+				}
+	      elseif (is_search()) {
+					_e( '<li class="mh-child-crumbs">Search Results', 'flatsome' );
+					echo '</li>';
+				}
+	      echo '</ul>';
+			echo '</div>';
+		return ob_get_clean();
+	}
+	add_shortcode( 'mh_shortcode_bredcrumbs', 'mh_bredcrumbs' );
+}
