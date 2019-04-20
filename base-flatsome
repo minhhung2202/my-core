@@ -13,6 +13,14 @@ if ( !function_exists('mh_breadcrumbs') ) {
 }
 
 /* Blog */
+   /* Page title category */
+function mh_title_category(){
+  ob_start(); ?>
+  	<h2 class="uppercase mh-font-size-xx-large mh-no-margin-bottom mh-font-normal"><?php single_cat_title(); ?></h2>
+  <?php return ob_get_clean();
+}
+add_shortcode( 'mh_title_category_shortcode', 'mh_title_category' );
+
   /* Tin nổi bật */
 if ( !function_exists('mh_featured_post') ) {
   function mh_featured_post() {
