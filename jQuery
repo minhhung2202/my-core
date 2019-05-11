@@ -4,3 +4,17 @@
 $('.star').click(function(){
   $(this).toggleClass('clicked');
 });
+
+/**
+ * Hide menu on Scroll
+ */
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    jQuery(".mh-section-header-fixed").css("display", "block");
+  } else {
+    jQuery(".mh-section-header-fixed").css("display", "none");
+  }
+  prevScrollpos = currentScrollPos;
+}
