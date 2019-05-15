@@ -68,6 +68,16 @@ add_action( 'init', 'remove_woocommerce_add_to_cart_button' );
  $product->get_id();
 
 /**
+ * Get category name product
+ */
+global $post;
+$terms = get_the_terms( $post->ID, 'product_cat' );
+foreach ($terms as $term) {
+    echo $product_cat_id = $term->name;
+    break;
+}
+
+/**
  * Custom checkout field Woocommerce
  */
 function custom_remove_woo_checkout_fields( $fields ) {
