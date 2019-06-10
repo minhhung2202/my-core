@@ -15,6 +15,14 @@ echo get_the_category_list;
 
 single_cat_title(); // Flatsome
 
+/* Get term by current post */
+$terms = get_the_terms( $post->ID, 'featured_item_category' );
+if ($terms) {
+	foreach($terms as $term) {
+		$cat = $term->name;
+	}
+}
+
 /* Shortcode WPML */
 function language_switcher_fun( $atts ){
     ob_start();
