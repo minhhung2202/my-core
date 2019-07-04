@@ -27,7 +27,10 @@ add_action( 'init', 'remove_woocommerce_add_to_cart_button' );
 /**
  * Get price
  */ 
-  $product->get_price_html();
+$product->get_price_html();
+$product->get_regular_price();
+$product->get_sale_price();
+$product->get_price();
   /* With loop */
   <?php
     global $woocommerce;
