@@ -1,5 +1,5 @@
 /**
- * Custom CSS
+ * Custom CSS Theme & Plugins
  */
 function mh_load_theme_style() {
 	/* Load CSS */
@@ -23,3 +23,9 @@ function mh_load_theme_style() {
 	wp_enqueue_style( 'all-font-awesome' );
 }
 add_action( 'wp_enqueue_scripts', 'mh_load_theme_style', 998 );
+
+function mh_load_plugin_style() {
+	wp_register_style( 'style-plugin', plugins_url( '/assets/css/style.css', __FILE__ ) );
+	wp_enqueue_style( 'style-plugin' );
+}
+add_action( 'admin_init', 'mh_load_plugin_style' );
