@@ -91,3 +91,9 @@ if ( !function_exists('mh_bredcrumbs') ) {
 	}
 	add_shortcode( 'mh_shortcode_bredcrumbs', 'mh_bredcrumbs' );
 }
+
+/* Upload size limit */
+function increase_upload_size_limit( $limit ) {
+  return 348576;
+}
+add_filter( 'upload_size_limit', 'increase_upload_size_limit' );
