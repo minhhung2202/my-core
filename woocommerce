@@ -305,3 +305,22 @@ function mh_get_tour() {
 }
 add_action( 'woocommerce_single_product_summary', 'mh_get_tour', 20 );
 add_action( 'flatsome_product_box_after', 'mh_get_tour' );
+
+/**
+ * Query list product
+ */
+$orderby = 'name';
+$order = 'asc';
+$cat_args = array(
+	'orderby'    => $orderby,
+	'order'      => $order,
+	'hide_empty' => true
+);
+
+$product_categories = get_terms( 'product_cat', $cat_args );
+
+if( !empty($product_categories) ){
+	foreach ($product_categories as $key => $category) {
+		echo '<option>'.$category->name.'</option>';
+	}
+}
