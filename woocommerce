@@ -324,3 +324,43 @@ if( !empty($product_categories) ){
 		echo '<option>'.$category->name.'</option>';
 	}
 }
+
+/**
+ * Get units bought
+ */
+add_action( 'woocommerce_single_product_summary', 'wc_product_sold_count', 11 );
+function wc_product_sold_count() {
+    // Only for logged in users
+    if ( ! is_user_logged_in() ) return; // Exit for non logged users
+
+    global $wpdb, $product;
+
+    $user_id = get_current_user_id(); // Current User ID
+    $product_id = $product->get_id(); // Current Product ID
+
+    // The SQL request
+    $units_bought = $wpdb->get_var( "
+        SELECT SUM(woim2.meta_value)
+        FROM {$wpdb->prefix}woocommerce_order_items AS woi
+        INNER JOIN {$wpdb->prefix}woocommerce_order_itemmeta woim ON woi.order_item_id = woim.order_item_id
+        INNER JOIN {$wpdb->prefix}woocommerce_order_itemmeta woim2 ON woi.order_item_id = woim2.order_item_id
+        INNER JOIN {$wpdb->prefix}postmeta pm ON woi.order_id = pm.post_id
+        INNER JOIN {$wpdb->prefix}posts AS p ON woi.order_id = p.ID
+        WHERE woi.order_item_type LIKE 'line_item'
+        AND p.post_type LIKE 'shop_order'
+        AND p.post_status IN ('wc-completed','wc-processing')
+        AND pm.meta_key = '_customer_user'
+        AND pm.meta_value = '$user_id'
+        AND woim.meta_key = '_product_id'
+        AND woim.meta_value = '$product_id'
+        AND woim2.meta_key = '_qty'
+    ");
+
+    // Display count if is greater than zero
+    if( $units_bought > 0 ){
+        $label = __( 'Units bought' , 'woocommerce' ); // Label
+
+        // Output
+        echo '<p class="units-bought"><strong>' . $label . ': </strong>' . $units_bought . '</p>';
+    }
+}
