@@ -1,8 +1,16 @@
 /**
  * Click add class 
  */
+/* Add class and remove */
 $('.star').click(function(){
   $(this).toggleClass('clicked');
+});
+
+/* Add active class and remove active from other element on click */
+$(".tab").click(function () {
+    $(".tab").removeClass("active");
+    // $(".tab").addClass("active"); // instead of this do the below 
+    $(this).addClass("active");   
 });
 
 /**
