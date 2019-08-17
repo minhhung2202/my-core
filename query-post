@@ -10,6 +10,7 @@ if ( !function_exists('query_testimonial') ) {
 			'post_status' => 'publish',
 			'posts_per_page' => -1,
 			'paged' => $page,
+			/* Fix 404: 'paged' => get_query_var('paged') */
 			'tax_query' => array(
 				array(
 					'taxonomy' => 'category-testimonial',
@@ -43,3 +44,13 @@ if ( !function_exists('query_testimonial') ) {
 	}
 	add_shortcode( 'mh_query_testimonial', 'query_testimonial' );
 }
+
+/**
+ * Fix 404 archive
+ */
+function custom_posts_per_page( $query ) {
+	if ( $query->is_archive('recruitment') ) {
+	  set_query_var('posts_per_page', 1);
+	}
+}
+add_action( 'pre_get_posts', 'custom_posts_per_page' );
