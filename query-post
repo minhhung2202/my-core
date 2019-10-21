@@ -56,10 +56,14 @@ function custom_posts_per_page( $query ) {
 add_action( 'pre_get_posts', 'custom_posts_per_page' );
 
 /**
- * Pagination post
+ * Fix prevent 301 redirect on page 1
  */
 function pif_disable_redirect_canonical($redirect_url) {
     if (is_singular()) $redirect_url = false;
 return $redirect_url;
 }
 add_filter('redirect_canonical','pif_disable_redirect_canonical');
+
+add_filter('paginate_links', function ($link) {
+    return preg_replace('#page\/1[^\d]#', '', $link);
+});
