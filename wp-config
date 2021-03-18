@@ -1,4 +1,0 @@
-define( 'WP_MEMORY_LIMIT', '256M' );
-define( 'WP_POST_REVISIONS', false );
-define( 'AUTOSAVE_INTERVAL', 600 );
-define( 'DISALLOW_FILE_EDIT', true );
